@@ -84,6 +84,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "detailsSegue") {
+            let movieDictionary = self.moviesArray![self.movieTableView.indexPathForSelectedRow()!.row] as?  NSDictionary
+            
+            var mdVC = segue.destinationViewController as MovieDetailsViewController;
+            mdVC.movieDictionary = movieDictionary
+        }
+    }
+    
     
     /*
     // MARK: - Navigation
