@@ -30,7 +30,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
     
     func refresh(sender:AnyObject)
     {
-        let YourApiKey = "9aqv88tz6dsqazb5qbsgszzj" // Fill with the key you registered at http://developer.rottentomatoes.com
+        let YourApiKey = "9aqv88tz6dsqazb5qbsgszzj"
         let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=" + YourApiKey
         let request = NSMutableURLRequest(URL: NSURL.URLWithString(RottenTomatoesURLString))
         

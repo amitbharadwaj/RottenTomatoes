@@ -8,18 +8,24 @@
 
 import UIKit
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var synopsysLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var synopsysTextView: UITextView!
+    @IBOutlet weak var scrollview: UIScrollView!
     
     var movieDictionary:NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.scrollview.delegate = self
+        self.scrollview.contentSize = CGSizeMake(320, 1000)
+        self.scrollview.backgroundColor = UIColor.clearColor()
+        
         titleLabel.text = movieDictionary["title"] as? String
-        synopsysLabel.text = movieDictionary["synopsis"] as? String
+        synopsysTextView.text = movieDictionary["synopsis"] as? String
         
         let imagesDictionary = movieDictionary["posters"] as NSDictionary
         
@@ -37,20 +43,21 @@ class MovieDetailsViewController: UIViewController {
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        println(self.scrollview.contentOffset.y)
+        
+        if (scrollview == self.scrollview) {
+            let yOffset:CGFloat = scrollview.contentOffset.y - self.view.frame.origin.y
+            
+            let cgPoint:CGPoint = CGPointMake(0, yOffset)
+
+        }
+        
+//        let frame:CGRect = scrollview.bounds
+//        let offsetFrame:CGRect = CGRectOffset(frame, cgPoint.x, cgPoint.y)
+//        scrollview.frame = offsetFrame
+        
+       // scrollview.setContentOffset(cgPoint, animated: true)
     }
-    
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }
