@@ -10,8 +10,8 @@ Which required and optional stories have you completed?
 - [ ] All images fade in (optional)
 - [x] For the large poster, load the low-res image first, switch to high-res when complete (optional)
 - [ ] All images should be cached in memory and disk. In other words, images load immediately upon cold start (optional).
-- [ ] Customize the highlight and selection effect of the cell. (optional)
-- [ ] Customize the navigation bar. (optional)
+- [x] Customize the highlight and selection effect of the cell. (optional)
+- [x] Customize the navigation bar. (optional)
 - [ ] Add a tab bar for Box Office and DVD. (optional)
 - [ ] Add a search bar. (optional)
 
