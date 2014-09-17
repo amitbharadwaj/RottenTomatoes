@@ -24,5 +24,11 @@ class MovieTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        var bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.redColor()
+        self.selectedBackgroundView = bgColorView
+    }
 
 }
