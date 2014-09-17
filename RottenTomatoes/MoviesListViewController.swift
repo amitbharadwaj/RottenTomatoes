@@ -31,7 +31,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
     func refresh(sender:AnyObject)
     {
         let YourApiKey = "9aqv88tz6dsqazb5qbsgszzj"
-        let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/dvds/top_rentals.json?apikey=" + YourApiKey
+        let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=" + YourApiKey
         let request = NSMutableURLRequest(URL: NSURL.URLWithString(RottenTomatoesURLString))
         
         // Show waiting for download
@@ -79,8 +79,26 @@ class MoviesViewController: UIViewController, UITableViewDataSource {
         let imagesDictionary = movieDictionary["posters"] as NSDictionary
         let url = NSURL(string: imagesDictionary["thumbnail"] as NSString)
         
-        // cell.posterImageView.image = UIImage(named: "placeholder")
         cell.posterImageView.setImageWithURL(url)
+        
+        // Create attributed string
+        let mpaaRatingString = movieDictionary["mpaa_rating"] as String
+        let synopsisString = movieDictionary["synopsis"] as String
+
+        // Define attributes
+        let mpaaRatingAttributes :Dictionary = [NSFontAttributeName : UIFont.boldSystemFontOfSize(15)]
+        
+        var mpaaRatingAttrString = NSMutableAttributedString(string: mpaaRatingString, attributes:mpaaRatingAttributes)
+        
+        
+        var synopsisAttrString = NSMutableAttributedString(string: " \(synopsisString)")
+
+        
+        mpaaRatingAttrString.appendAttributedString(synopsisAttrString)
+
+        cell.sysnopsisLabel.attributedText = mpaaRatingAttrString
+
+        
         return cell
     }
     

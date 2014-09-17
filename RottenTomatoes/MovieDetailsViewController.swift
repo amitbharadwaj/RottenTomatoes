@@ -24,7 +24,14 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         self.scrollview.contentSize = CGSizeMake(320, 1000)
         self.scrollview.backgroundColor = UIColor.clearColor()
         
-        titleLabel.text = movieDictionary["title"] as? String
+        let movieName = movieDictionary["title"] as String
+        let movieYear = movieDictionary["year"] as Int
+        
+        let titleText = "\(movieName) (\(movieYear))"
+        
+        titleLabel.text = titleText
+        
+        
         synopsysTextView.text = movieDictionary["synopsis"] as? String
         
         let imagesDictionary = movieDictionary["posters"] as NSDictionary
