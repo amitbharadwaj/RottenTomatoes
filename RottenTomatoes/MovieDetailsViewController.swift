@@ -14,6 +14,8 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var synopsysTextView: UITextView!
     @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var mpaaRatingLabel: UILabel!
     
     var movieDictionary:NSDictionary!
     
@@ -31,10 +33,20 @@ class MovieDetailsViewController: UIViewController, UIScrollViewDelegate {
         
         titleLabel.text = titleText
         
-        
+        synopsysTextView.editable = false;
         synopsysTextView.text = movieDictionary["synopsis"] as? String
         
         let imagesDictionary = movieDictionary["posters"] as NSDictionary
+        
+        let ratingsDictionary = movieDictionary["ratings"] as NSDictionary
+        
+        let criticsScore = ratingsDictionary["critics_score"] as Int
+        let audienceScore = ratingsDictionary["audience_score"] as Int
+        
+        scoreLabel.text = "Critics Score: \(criticsScore), Audience Score: \(audienceScore)"
+        
+        mpaaRatingLabel.text = movieDictionary["mpaa_rating"] as String
+
         
         // Load thumbnail firsts
         let thumbnail = imagesDictionary["thumbnail"] as NSString
