@@ -14,9 +14,14 @@ Which required and optional stories have you completed?
 - [ ] Customize the navigation bar. (optional)
 - [ ] Add a tab bar for Box Office and DVD. (optional)
 - [ ] Add a search bar. (optional)
+
 * Additional Requirements
 - [x] Must use Cocoapods.
-- [x]Asynchronous image downloading must be implemented using the UIImageView category in the AFNetworking library.
+- [x] Asynchronous image downloading must be implemented using the UIImageView category in the AFNetworking library.
+ 
+
+ 
+
 
 
 GIF walkthrough of all required and optional stories (using LiceCap)
